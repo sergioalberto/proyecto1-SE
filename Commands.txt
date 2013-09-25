@@ -1,4 +1,3 @@
-
 Nota: Con el Ip de mi PC
 https://developer.ridgerun.com/wiki/index.php/Using_UDP_Multicast_with_GStreamer
 
