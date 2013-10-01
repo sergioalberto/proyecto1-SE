@@ -12,9 +12,15 @@ class MainWindow : public QMainWindow
     Q_OBJECT
     
 public:
+
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
-    
+
+public slots:
+        void playButtonClick();
+        void loadButtonClick();
+        void play();
+
 private:
     Ui::MainWindow *ui;
 };

@@ -9,6 +9,8 @@ QT       += core gui
 TARGET = ClientPlayer
 TEMPLATE = app
 
+CONFIG += link_pkgconfig
+PKGCONFIG += gstreamer-0.10
 
 SOURCES += main.cpp\
         mainwindow.cpp
@@ -16,3 +18,5 @@ SOURCES += main.cpp\
 HEADERS  += mainwindow.h
 
 FORMS    += mainwindow.ui
+
+

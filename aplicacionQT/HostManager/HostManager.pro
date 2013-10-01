@@ -9,10 +9,15 @@ QT       += core gui
 TARGET = HostManager
 TEMPLATE = app
 
-
 SOURCES += main.cpp\
         mainwindow.cpp
 
 HEADERS  += mainwindow.h
 
 FORMS    += mainwindow.ui
+
+
+unix {
+    CONFIG += link_pkgconfig
+    PKGCONFIG += gstreamer-0.10
+}
