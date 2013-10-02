@@ -198,36 +198,44 @@ void reproductor::unpause(){
     //}
 }
 
-void reproductor::stream(){
+void reproductor::stream(char *name,char *ip, int port){
     //gst-launch filesrc location="1.mp3" ! mad ! audioconvert ! audioresample ! mulawenc ! \rtppcmupay ! udpsink host=172.18.84.135 auto-multicast=true port=9000
     GMainLoop *loop;
     GstBus *bus;
     GstElement *source;
     GstElement *filter;
     GstElement *convert;
-    GstElement *resample;
-    GstElement *mulawenc;
     GstElement *rtppcmupay;
     GstElement *sink;
+    GstElement *capsfilter ;
     //gst-launch filesrc location=1.mp3 ! mad ! audioconvert ! audio/x-raw-int,channels=1,
     //depth=16,width=16, rate=44100 ! rtpL16pay  ! udpsink host=224.0.0.15 port=5000;
-    char name[]="/home/luis/Escritorio/1.mp3";
+
+    name="/home/luis/Escritorio/1.mp3";
+    port = 5000;
+    ip ="224.0.0.15";
     gst_init (NULL, NULL);
+    //gst_parse_launch("gst-launch filesrc location=1.mp3 ! mad ! audioconvert ! audio/x-raw-int,channels=1,depth=16,width=16, rate=44100 ! rtpL16pay  ! udpsink host=224.0.0.15 port=5000",NULL);
+
     loop     = g_main_loop_new (NULL, FALSE);
-    pipeline = gst_pipeline_new ("mp3 player");
+    pipeline = gst_pipeline_new ("mp3 stream");
     source   = gst_element_factory_make ("filesrc", "file reader");
     filter   = gst_element_factory_make ("mad", "MP3 decoder");
     convert  = gst_element_factory_make ("audioconvert", "audioconvert");
-    resample = gst_element_factory_make ("audio/x-raw-int", "audioresample");
-   // mulawenc = gst_element_factory_make ("mulawenc", "mulawenc");
+    capsfilter = gst_element_factory_make("capsfilter", "caps");
+
+    GstCaps *caps = gst_caps_from_string("audio/x-raw-int,channels=1,depth=16,width=16, rate=44100");
+    g_object_set (capsfilter, "caps", caps, NULL);
+    gst_caps_unref (caps);
+
     rtppcmupay = gst_element_factory_make ("rtpL16pay", "rtpL16pay");
     sink     = gst_element_factory_make ("udpsink", "udpsink");
 
     g_object_set(G_OBJECT (source), "location",name,NULL);
-    g_object_set(G_OBJECT (sink), "host","224.0.0.15","port",5000, NULL);
-    g_object_set(G_OBJECT (resample), "channels",1,"depth",16,"width",16,"rate",44100,NULL);
-    gst_bin_add_many (GST_BIN (pipeline), source, filter, convert,resample,rtppcmupay,sink, NULL);
-    gst_element_link_many (source, filter, convert,resample,rtppcmupay,sink, NULL);
+    g_object_set(G_OBJECT (sink), "host",ip,"port",port, NULL);
+
+    gst_bin_add_many (GST_BIN (pipeline), source, filter, convert,capsfilter,rtppcmupay,sink, NULL);
+    gst_element_link_many (source, filter, convert,capsfilter,rtppcmupay,sink, NULL);
     bus = gst_pipeline_get_bus (GST_PIPELINE (pipeline));
     gst_bus_add_watch (bus, bus_call, loop);
     gst_object_unref (bus);

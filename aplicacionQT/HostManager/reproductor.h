@@ -8,7 +8,7 @@ public:
     reproductor();
     void play(char *name);
     void stop();
-    void stream();
+    void stream(char *name,char *ip, int port);
     void pause();
     void unpause();
 };

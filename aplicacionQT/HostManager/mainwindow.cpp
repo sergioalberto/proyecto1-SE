@@ -19,7 +19,17 @@ MainWindow::~MainWindow()
 
 
 void MainWindow::streamButtonClick(){
+    std::string s=ui->labelArchivo->text().toStdString();
+    char *name=new char[s.size()+1];
+    name[s.size()]=0;
+    memcpy(name,s.c_str(),s.size());
 
+    s=ui->ipEntry->text().toStdString();
+    char *ip=new char[s.size()+1];
+    name[s.size()]=0;
+    memcpy(name,s.c_str(),s.size());
+    int port = ui->portEntry->text().toInt();
+    player.stream(name,ip, port);
 
 }
 
