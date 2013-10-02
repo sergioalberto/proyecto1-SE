@@ -10,9 +10,11 @@ TARGET = HostManager
 TEMPLATE = app
 
 SOURCES += main.cpp\
-        mainwindow.cpp
+        mainwindow.cpp \
+    reproductor.cpp
 
-HEADERS  += mainwindow.h
+HEADERS  += mainwindow.h \
+    reproductor.h
 
 FORMS    += mainwindow.ui
 
