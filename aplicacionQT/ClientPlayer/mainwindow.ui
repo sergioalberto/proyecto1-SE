@@ -27,57 +27,11 @@
      <string>Play</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="addButton">
+   <widget class="QLineEdit" name="puertoEntry">
     <property name="geometry">
      <rect>
-      <x>260</x>
-      <y>70</y>
-      <width>98</width>
-      <height>27</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Add IP</string>
-    </property>
-   </widget>
-   <widget class="QComboBox" name="comboBox">
-    <property name="geometry">
-     <rect>
-      <x>240</x>
-      <y>20</y>
-      <width>141</width>
-      <height>31</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="ipInput">
-    <property name="geometry">
-     <rect>
-      <x>120</x>
-      <y>70</y>
-      <width>113</width>
-      <height>27</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label">
-    <property name="geometry">
-     <rect>
-      <x>140</x>
-      <y>30</y>
-      <width>66</width>
-      <height>17</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Group IP</string>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="lineEdit">
-    <property name="geometry">
-     <rect>
-      <x>120</x>
-      <y>120</y>
+      <x>20</x>
+      <y>60</y>
       <width>113</width>
       <height>27</height>
      </rect>
@@ -86,14 +40,40 @@
    <widget class="QLabel" name="label_2">
     <property name="geometry">
      <rect>
-      <x>280</x>
-      <y>130</y>
+      <x>150</x>
+      <y>70</y>
       <width>66</width>
       <height>17</height>
      </rect>
     </property>
     <property name="text">
      <string>Puerto</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>140</x>
+      <y>30</y>
+      <width>101</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Puerto Actual</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="puertoLabel">
+    <property name="geometry">
+     <rect>
+      <x>250</x>
+      <y>30</y>
+      <width>66</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>5000</string>
     </property>
    </widget>
   </widget>
@@ -136,8 +116,25 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>puertoEntry</sender>
+   <signal>textChanged(QString)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>portChanged()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>95</x>
+     <y>115</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>240</x>
+     <y>170</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>playButtonClick()</slot>
+  <slot>portChanged()</slot>
  </slots>
 </ui>

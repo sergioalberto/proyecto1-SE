@@ -13,9 +13,11 @@ CONFIG += link_pkgconfig
 PKGCONFIG += gstreamer-0.10
 
 SOURCES += main.cpp\
-        mainwindow.cpp
+        mainwindow.cpp \
+    streamer.cpp
 
-HEADERS  += mainwindow.h
+HEADERS  += mainwindow.h \
+    streamer.h
 
 FORMS    += mainwindow.ui
 
