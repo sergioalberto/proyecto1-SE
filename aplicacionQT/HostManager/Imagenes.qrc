@@ -2,5 +2,8 @@
     <qresource prefix="/">
         <file>Imagenes/logo.png</file>
         <file>Imagenes/fondo.jpg</file>
+        <file>Imagenes/barras.png</file>
+        <file>Imagenes/audifonos.png</file>
+        <file>Imagenes/logo1.gif</file>
     </qresource>
 </RCC>

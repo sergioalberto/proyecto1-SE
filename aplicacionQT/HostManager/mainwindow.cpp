@@ -8,13 +8,19 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),ui(new Ui::MainWin
     ui->setupUi(this);
     QPalette sample_palette;
     sample_palette.setColor(QPalette::Window, Qt::transparent);
-    sample_palette.setColor(QPalette::WindowText, Qt::white);
+    sample_palette.setColor(QPalette::WindowText, Qt::red);
+
+    ui->label->setPalette(sample_palette);
+    ui->ipLabel->setPalette(sample_palette);
+    sample_palette.setColor(QPalette::Window, Qt::white);
+    sample_palette.setColor(QPalette::WindowText, Qt::blue);
+    ui->labelArchivo->setPalette(sample_palette);
+
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
-
 }
 
 
@@ -41,10 +47,11 @@ void MainWindow::loadButtonClick(){
     QString Nombre = QFileDialog::getOpenFileName(this,
                                 trUtf8(""),
                                 ui->labelArchivo->text(),
-                                trUtf8("Archivos ogg(*.ogg);;Todos los archivos (*);;Archivos mp3 (*.mp3)"),
+                                trUtf8("Archivos mp3 (*.mp3);;Todos los archivos (*);;Archivos ogg(*.ogg)"),
                                 &filtroSeleccionado, 0);
-    if (!Nombre.isEmpty())
+    if (!Nombre.isEmpty()){
         ui->labelArchivo->setText(Nombre);
+    }
 }
 
 
