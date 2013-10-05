@@ -3,11 +3,12 @@
 #include <gst/gst.h>
 #include <QFileDialog>
 
-MainWindow::MainWindow(QWidget *parent) :
-    QMainWindow(parent),
-    ui(new Ui::MainWindow)
+MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    QPalette sample_palette;
+    sample_palette.setColor(QPalette::Window, Qt::transparent);
+    sample_palette.setColor(QPalette::WindowText, Qt::white);
 }
 
 MainWindow::~MainWindow()

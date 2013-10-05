@@ -21,5 +21,8 @@ FORMS    += mainwindow.ui
 
 unix {
     CONFIG += link_pkgconfig
-    PKGCONFIG += gstreamer-0.10
+    PKGCONFIG += gstreamer-1.0
 }
+
+RESOURCES += \
+    Imagenes.qrc
