@@ -83,7 +83,7 @@
     <property name="geometry">
      <rect>
       <x>100</x>
-      <y>270</y>
+      <y>220</y>
       <width>113</width>
       <height>27</height>
      </rect>
@@ -93,7 +93,7 @@
     <property name="geometry">
      <rect>
       <x>100</x>
-      <y>230</y>
+      <y>260</y>
       <width>113</width>
       <height>27</height>
      </rect>
@@ -103,26 +103,26 @@
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>240</y>
-      <width>66</width>
-      <height>17</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Puerto</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_4">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
       <y>270</y>
       <width>66</width>
       <height>17</height>
      </rect>
     </property>
     <property name="text">
-     <string>IP</string>
+     <string>Puerto:</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_4">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>220</y>
+      <width>66</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>IP:</string>
     </property>
    </widget>
    <widget class="QPushButton" name="pushButton_2">
