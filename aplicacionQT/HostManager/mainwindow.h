@@ -23,6 +23,7 @@ public slots:
         void loadButtonClick();
         void streamButtonClick();
         void pauseButtonClick();
+        QString getNameMusuic(QString name);
 
 private:
     Ui::MainWindow *ui;

@@ -10,7 +10,7 @@ TARGET = ClientPlayer
 TEMPLATE = app
 
 CONFIG += link_pkgconfig
-PKGCONFIG += gstreamer-0.10
+PKGCONFIG += gstreamer-1.0
 
 SOURCES += main.cpp\
         mainwindow.cpp \

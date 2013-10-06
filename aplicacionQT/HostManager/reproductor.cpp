@@ -146,7 +146,6 @@ void reproductor::play(char *name){
            g_source_remove (bus_watch_id);
            g_main_loop_unref (loop);
         */
-
     GMainLoop *loop;
     GstBus *bus;
     GstElement *source;
