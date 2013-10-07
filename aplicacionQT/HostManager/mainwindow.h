@@ -25,6 +25,9 @@ public slots:
         void pauseButtonClick();
         QString getNameMusuic(QString name);
 
+private slots:
+        void on_agregarButton_clicked();
+
 private:
     Ui::MainWindow *ui;
 };

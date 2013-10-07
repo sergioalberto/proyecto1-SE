@@ -12,10 +12,11 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),ui(new Ui::MainWin
     ui->setupUi(this);
     QPalette sample_palette;
     sample_palette.setColor(QPalette::Window, Qt::transparent);
-    sample_palette.setColor(QPalette::WindowText, Qt::red);
+    sample_palette.setColor(QPalette::WindowText, Qt::white);
 
-    //ui->label->setPalette(sample_palette);
-    //ui->ipLabel->setPalette(sample_palette);
+    ui->label_4->setPalette(sample_palette);
+    ui->label_3->setPalette(sample_palette);
+    ui->label_6->setPalette(sample_palette);
     sample_palette.setColor(QPalette::Window, Qt::white);
     sample_palette.setColor(QPalette::WindowText, Qt::blue);
     ui->labelArchivo->setPalette(sample_palette);
@@ -30,20 +31,39 @@ MainWindow::~MainWindow()
 }
 
 
-
+int state = 0;
 void MainWindow::streamButtonClick(){
-    std::string s = CancionLIsta;
-    char *name=new char[s.size()+1];
-    name[s.size()]=0;
-    memcpy(name,s.c_str(),s.size());
+    if(state==0){
+        ui->pushButton->setText("Stop");
+        state=1;
+        char *name, *ip;
+        int port;
+        std::string s=ui->labelArchivo->text().toStdString();
+        name=new char[s.size()+1];
+        name[s.size()]=0;
+        memcpy(name,s.c_str(),s.size());
 
-    s=ui->ipEntry->text().toStdString();
-    char *ip=new char[s.size()+1];
-    name[s.size()]=0;
-    memcpy(name,s.c_str(),s.size());
-    int port = ui->portEntry->text().toInt();
-    player.stream(name,ip, port);
+        int indice = ui->datosList->currentRow();
 
+        s=ui->datosList->item(indice,1)->text().toStdString();
+        //ui->l->setText(ui->datosList->item(indice,2)->text());
+        ip=new char[s.size()+1];
+        ip[s.size()]=0;
+        memcpy(ip,s.c_str(),s.size());
+
+        if(ui->datosList->item(indice,2)->text().count()>0){
+             port = ui->datosList->item(indice,2)->text().toInt();;
+        }else{
+            port = 5000;
+        }
+         player.stream(name,ip, port);
+
+    }
+    else{
+        ui->pushButton->setText("Stream");
+        state=0;
+        player.stop();
+    }
 }
 
 
@@ -121,3 +141,23 @@ QString MainWindow::getNameMusuic(QString name){
 }
 
 
+
+void MainWindow::on_agregarButton_clicked()
+{
+    if(ui->portEntry_2->text().count()>0 && ui->ipEntry->text().count()>0){
+        int size = ui->datosList->rowCount();
+        ui->datosList->insertRow(size);
+        QTableWidgetItem *nuevo = new QTableWidgetItem(ui->portEntry_2->text());
+        QTableWidgetItem *nuevo2 = new QTableWidgetItem(ui->ipEntry->text());
+        QTableWidgetItem *nuevo3 = new QTableWidgetItem(ui->portEntry->text());
+
+        ui->datosList->setItem(size,0,nuevo);
+        ui->datosList->setItem(size,1,nuevo2);
+        //ui->datosList->setItem(size,2,nuevo3);
+
+        if(ui->portEntry->text().count()==0){
+            nuevo3 = new QTableWidgetItem("5000");
+        }
+        ui->datosList->setItem(size,2,nuevo3);
+    }
+}
