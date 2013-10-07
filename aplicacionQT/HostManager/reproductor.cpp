@@ -211,8 +211,8 @@ void reproductor::stream(char *name,char *ip, int port){
     //depth=16,width=16, rate=44100 ! rtpL16pay  ! udpsink host=224.0.0.15 port=5000;
 
     //name="/home/luis/Escritorio/1.mp3";
-    port = 5000;
-    ip ="224.0.0.15";
+    //port = 5000;
+    //ip ="224.0.0.15";
     gst_init (NULL, NULL);
     //gst_parse_launch("gst-launch filesrc location=1.mp3 ! mad ! audioconvert ! audio/x-raw-int,channels=1,depth=16,width=16, rate=44100 ! rtpL16pay  ! udpsink host=224.0.0.15 port=5000",NULL);
 
