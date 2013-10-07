@@ -38,16 +38,16 @@ void MainWindow::streamButtonClick(){
         state=1;
         char *name, *ip;
         int port;
-        std::string s=ui->labelArchivo->text().toStdString();
+        std::string s = CancionLIsta;
         name=new char[s.size()+1];
         name[s.size()]=0;
         memcpy(name,s.c_str(),s.size());
 
         int indice = ui->datosList->currentRow();
 
-        s=ui->datosList->item(indice,1)->text().toStdString();
+        s = ui->datosList->item(indice,1)->text().toStdString();
         //ui->l->setText(ui->datosList->item(indice,2)->text());
-        ip=new char[s.size()+1];
+        ip = new char[s.size()+1];
         ip[s.size()]=0;
         memcpy(ip,s.c_str(),s.size());
 
@@ -57,7 +57,6 @@ void MainWindow::streamButtonClick(){
             port = 5000;
         }
          player.stream(name,ip, port);
-
     }
     else{
         ui->pushButton->setText("Stream");
@@ -80,9 +79,13 @@ void MainWindow::loadButtonClick(){
         ui->labelArchivo->setText(getNameMusuic(Nombre));
         std::cout << getNameMusuic(ui->labelArchivo->text()).toStdString() << std::endl;
 
+        int size = ui->datosList_2->rowCount();
+        ui->datosList_2->insertRow(size);
+        QTableWidgetItem *nuevo = new QTableWidgetItem(ui->labelArchivo->text());
+        ui->datosList_2->setItem(size,0,nuevo);
+
     }
 }
-
 
 int ispause=0;
 void MainWindow::pauseButtonClick(){

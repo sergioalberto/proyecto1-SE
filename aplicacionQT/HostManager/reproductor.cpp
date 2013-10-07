@@ -24,6 +24,21 @@ static void on_pad_added (GstElement *element, GstPad *pad, gpointer data) {
     gst_object_unref (sinkpad);
 }
 
+gboolean cb_print_position (GstElement *pipeline)
+{
+    GstFormat fmt = GST_FORMAT_TIME;
+
+    gint64 *pos;
+    gint64 *len;
+
+    if ( gst_element_query_position (pipeline, fmt, pos) && gst_element_query_duration (pipeline, fmt, len) ) {
+        g_print ("Time: %" GST_TIME_FORMAT " / %" GST_TIME_FORMAT "\r",GST_TIME_ARGS (pos), GST_TIME_ARGS (len));
+    }
+
+    /* call me again */
+    return TRUE;
+}
+
 
 static gboolean bus_call (GstBus *bus, GstMessage *msg, gpointer data) {
 
@@ -65,8 +80,7 @@ void reproductor::play(char *name){
     GstElement *source;
     GstElement *filter;
     GstElement *sink;
-    //GstElement *pipeline;
-    //name="/home/luis/Escritorio/1.mp3";
+    int tiempo;
     gst_init (NULL, NULL);
     loop     = g_main_loop_new (NULL, FALSE);
     pipeline = gst_pipeline_new ("mp3 player");
@@ -79,8 +93,11 @@ void reproductor::play(char *name){
     gst_element_link_many (source, filter, sink, NULL);
     bus = gst_pipeline_get_bus (GST_PIPELINE (pipeline));
     gst_bus_add_watch (bus, bus_call, loop);
-    gst_object_unref (bus);
+
     gst_element_set_state (pipeline, GST_STATE_PLAYING);
+
+    tiempo = g_timeout_add (200, (GSourceFunc) cb_print_position, pipeline);
+    gst_object_unref (bus);
     g_main_loop_run (loop);
 }
 
