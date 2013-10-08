@@ -9,3 +9,38 @@ gst-launch filesrc location="1.mp3" ! mad ! audioconvert ! audioresample ! mulaw
 PC(Cliente):
 
 gst-launch-0.10 udpsrc multicast-group=172.18.84.135 auto-multicast=true port=9000 \caps="application/x-rtp,media=(string)audio,clock-rate=(int)8000, encoding-name=(string)PCMU,\payload=(int)0,ssrc=(guint)1350777638,clock-base=(guint)2942119800,seqnum-base=(guint)47141" ! \rtppcmudepay ! mulawdec ! pulsesink
+
+*********************************************************************
+1) Eliminar la matrix en la beagleboard-xM, corriendo el siguiente comando en la beagle:
+update-rc.d -f matrix-gui-2.0 remove 
+
+2) Ejecutar la aplicacion en el momento de arrancar el sistema, con las siguientes comandos:
+
+cd /etc/init.d
+
+touch helloworld.sh
+
+vi helloworld.sh
+
+	#!/bin/sh
+	echo ""
+	echo "Hello from Sitara!!!"
+
+	echo ""
+
+	amixer sset 'DAC1 Digital Fine' 40
+	amixer sset 'Headset' 2
+	amixer sset 'HeadsetL Mixer AudioL1' on
+	amixer sset 'HeadsetL Mixer AudioR1' on
+
+	cd /home/root
+
+	./HostManager -qws
+
+chmod +x helloworld.sh
+
+cd /etc/rc5.d
+
+ln -s ../init.d/helloworld.sh S99helloworld
+
+	Nota: al final reiniciar la beagleboard
