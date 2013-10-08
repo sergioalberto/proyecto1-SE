@@ -33,35 +33,37 @@ MainWindow::~MainWindow()
 
 int state = 0;
 void MainWindow::streamButtonClick(){
-    if(state==0){
-        ui->pushButton->setText("Stop");
-        state=1;
-        char *name, *ip;
-        int port;
-        std::string s = CancionLIsta;
-        name=new char[s.size()+1];
-        name[s.size()]=0;
-        memcpy(name,s.c_str(),s.size());
+    if(ui->datosList->currentRow()>=0){
+        if(state==0){
+            ui->pushButton->setText("Stop");
+            state=1;
+            char *name, *ip;
+            int port;
+            std::string s = CancionLIsta;
+            name=new char[s.size()+1];
+            name[s.size()]=0;
+            memcpy(name,s.c_str(),s.size());
 
-        int indice = ui->datosList->currentRow();
+            int indice = ui->datosList->currentRow();
 
-        s = ui->datosList->item(indice,1)->text().toStdString();
-        //ui->l->setText(ui->datosList->item(indice,2)->text());
-        ip = new char[s.size()+1];
-        ip[s.size()]=0;
-        memcpy(ip,s.c_str(),s.size());
+            s = ui->datosList->item(indice,1)->text().toStdString();
+            //ui->l->setText(ui->datosList->item(indice,2)->text());
+            ip = new char[s.size()+1];
+            ip[s.size()]=0;
+            memcpy(ip,s.c_str(),s.size());
 
-        if(ui->datosList->item(indice,2)->text().count()>0){
-             port = ui->datosList->item(indice,2)->text().toInt();;
-        }else{
-            port = 5000;
+            if(ui->datosList->item(indice,2)->text().count()>0){
+                 port = ui->datosList->item(indice,2)->text().toInt();;
+            }else{
+                port = 5000;
+            }
+             player.stream(name,ip, port);
         }
-         player.stream(name,ip, port);
-    }
-    else{
-        ui->pushButton->setText("Stream");
-        state=0;
-        player.stop();
+        else{
+            ui->pushButton->setText("Stream");
+            state=0;
+            player.stop();
+        }
     }
 }
 
@@ -76,8 +78,9 @@ void MainWindow::loadButtonClick(){
                                 &filtroSeleccionado, 0);
     if (!Nombre.isEmpty()){
         CancionLIsta = Nombre.toStdString();
-        ui->labelArchivo->setText(getNameMusuic(Nombre));
-        std::cout << getNameMusuic(ui->labelArchivo->text()).toStdString() << std::endl;
+         //std::cout << CancionLIsta << std::endl;
+        ui->labelArchivo->setText(getNameMusic(Nombre));
+      //  std::cout << getNameMusic(ui->labelArchivo->text()).toStdString() << std::endl;
 
         int size = ui->datosList_2->rowCount();
         ui->datosList_2->insertRow(size);
@@ -109,9 +112,11 @@ void MainWindow::playButtonClick()
         ui->pauseButton->setEnabled(true);
         playing=1;
         std::string s = CancionLIsta;
+
         char *name=new char[s.size()+1];
         name[s.size()]=0;
         memcpy(name,s.c_str(),s.size());
+        printf(name);
         player.play(name);
 
     }
@@ -123,7 +128,7 @@ void MainWindow::playButtonClick()
     }
 }
 
-QString MainWindow::getNameMusuic(QString name){
+QString MainWindow::getNameMusic(QString name){
 
     QString resul;
     //printf("Name: %s\n", name.at(7));

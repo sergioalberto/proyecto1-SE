@@ -23,7 +23,7 @@ public slots:
         void loadButtonClick();
         void streamButtonClick();
         void pauseButtonClick();
-        QString getNameMusuic(QString name);
+        QString getNameMusic(QString name);
 
 private slots:
         void on_agregarButton_clicked();

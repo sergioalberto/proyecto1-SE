@@ -21,7 +21,7 @@ FORMS    += mainwindow.ui
 
 unix {
     CONFIG += link_pkgconfig
-    PKGCONFIG += gstreamer-1.0
+    PKGCONFIG += gstreamer-0.10
 }
 
 RESOURCES += \
