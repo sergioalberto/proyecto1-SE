@@ -4,9 +4,10 @@
 #include <QFileDialog>
 #include <QString>
 #include <iostream>
-
+#include <fstream>
 std::string CancionLIsta;
 
+using namespace std;
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
@@ -20,8 +21,10 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),ui(new Ui::MainWin
     sample_palette.setColor(QPalette::Window, Qt::white);
     sample_palette.setColor(QPalette::WindowText, Qt::blue);
     ui->labelArchivo->setPalette(sample_palette);
+   // QFile a = new QFile();
+    CancionLIsta = "";    
 
-    CancionLIsta = "";
+
 
 }
 
@@ -31,11 +34,69 @@ MainWindow::~MainWindow()
 }
 
 
+void MainWindow::loadIpData(){
+    //archivador.prueba();
+    QString filtroSeleccionado=".txt";
+    QString archivo = QFileDialog::getOpenFileName(this,
+                                trUtf8(""),
+                                ui->labelArchivo->text(),
+                                trUtf8("Archivos txt(*.txt);;Todos los archivos (*)"),
+                                &filtroSeleccionado, 0);
+    std::string s = archivo.toStdString();
+    char *name=new char[s.size()+1];
+    name[s.size()]=0;
+    memcpy(name,s.c_str(),s.size());
+    ifstream fe(name);
+    char cadena[128];
+
+    while(!fe.eof()) {
+        //fe >> cadena;
+        fe.getline(cadena, 128);
+        QString string(cadena);
+        getListaIpData(string);
+        cout << cadena << endl;
+    }
+    ui->datosList->removeRow(ui->datosList->rowCount()-1);
+}
+
+void MainWindow::getListaIpData(QString datos){
+
+    QString temp;
+    //printf("Name: %s\n", name.at(7));
+    //QString::SectionFlag flag = QString::SectionSkipEmpty;
+    temp = datos;
+    //resul.section('/',-1);
+    int indice=0;
+    int size = ui->datosList->rowCount();
+    ui->datosList->insertRow(size);
+    for (int i = datos.size()-1; i >= 0; i--){
+        if (temp.at(i).toAscii() == '/'){
+            temp.remove(0, i+1);
+
+
+            QTableWidgetItem *nuevo = new QTableWidgetItem(temp);
+            //QTableWidgetItem *nuevo2 = new QTableWidgetItem(ui->ipEntry->text());
+            //QTableWidgetItem *nuevo3 = new QTableWidgetItem(ui->portEntry->text());
+
+            ui->datosList->setItem(size,indice,nuevo);
+            indice++;
+            temp= datos;
+            temp.remove(i,datos.size()-1);
+            //std::cout << resul.at(i).toAscii() << std::endl;
+        }
+    }
+    //printf("Name: %s\n", resul.at(1).);
+
+}
+
+
 int state = 0;
 void MainWindow::streamButtonClick(){
-    if(ui->datosList->currentRow()>=0){
+
+
+    if(ui->datosList->currentRow()>=0 && CancionLIsta.length()>0){
         if(state==0){
-            ui->pushButton->setText("Stop");
+            ui->streamButton->setText("Stop");
             state=1;
             char *name, *ip;
             int port;
@@ -60,10 +121,17 @@ void MainWindow::streamButtonClick(){
              player.stream(name,ip, port);
         }
         else{
-            ui->pushButton->setText("Stream");
+            ui->streamButton->setText("Stream");
             state=0;
             player.stop();
         }
+    }
+}
+
+void MainWindow::eliminarCliente(){
+    if(ui->datosList->currentRow()>=0){
+        int indice = ui->datosList->currentRow();
+        ui->datosList->removeRow(indice);
     }
 }
 
@@ -107,24 +175,26 @@ void MainWindow::pauseButtonClick(){
 int playing=0;
 void MainWindow::playButtonClick()
 {
-    if(playing==0){
-        ui->playButton->setText("Stop");
-        ui->pauseButton->setEnabled(true);
-        playing=1;
-        std::string s = CancionLIsta;
+    if(CancionLIsta.length()>0){
+        if(playing==0){
+            ui->playButton->setText("Stop");
+            ui->pauseButton->setEnabled(true);
+            playing=1;
+            std::string s = CancionLIsta;
 
-        char *name=new char[s.size()+1];
-        name[s.size()]=0;
-        memcpy(name,s.c_str(),s.size());
-        printf(name);
-        player.play(name);
+            char *name=new char[s.size()+1];
+            name[s.size()]=0;
+            memcpy(name,s.c_str(),s.size());
+            printf(name);
+            player.play(name);
 
-    }
-    else{
-        ui->playButton->setText("Play");
-        ui->pauseButton->setEnabled(false);
-        playing=0;
-        player.stop();
+        }
+        else{
+            ui->playButton->setText("Play");
+            ui->pauseButton->setEnabled(false);
+            playing=0;
+            player.stop();
+        }
     }
 }
 

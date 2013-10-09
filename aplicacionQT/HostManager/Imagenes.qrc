@@ -6,5 +6,7 @@
         <file>Imagenes/logo1.gif</file>
         <file>Imagenes/fondo2.jpg</file>
         <file>Imagenes/fondo.jpg</file>
+        <file>listaIp.txt</file>
+        <file alias="lista">Imagenes/listaIp.txt</file>
     </qresource>
 </RCC>
