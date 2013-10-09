@@ -1,0 +1,169 @@
+commit dce929ce56b4cf98838aff22a1f15a34ba589998
+Author: Angel Phillips <angel@angel-HP-Pavilion-dm4-Notebook-PC>
+Date:   Wed Oct 9 11:10:45 2013 -0600
+
+    reporte del proyecto 1
+
+commit af133d81c20ae2255c46f278edfa345e4833ce11
+Author: Angel Phillips <angel@angel-HP-Pavilion-dm4-Notebook-PC>
+Date:   Wed Oct 9 10:59:00 2013 -0600
+
+    Envio de version final
+
+commit 807b44a4ceb124bd8406acb5c1c9f5532f257b6a
+Author: sergioalbertogq <sergioalbertogq@gmail.com>
+Date:   Wed Oct 9 10:49:28 2013 -0600
+
+    Version FINAL
+
+commit 27d156cf17e73e7180e068f353205ab0b574fe98
+Author: sergioalbertogq <sergioalbertogq@gmail.com>
+Date:   Tue Oct 8 11:13:42 2013 -0600
+
+    Agregue comandos para hacer el arrance automatico de la app
+
+commit 42559ca554490f63c06bfa3e65310b41c126060d
+Author: sergioalbertogq <sergioalbertogq@gmail.com>
+Date:   Tue Oct 8 10:05:30 2013 -0600
+
+    Primer test completo funcionando
+
+commit 10b1f6cf684f94a51a5d4dd7f23dce5dfe712588
+Author: sergioalbertogq <sergioalbertogq@gmail.com>
+Date:   Mon Oct 7 17:44:15 2013 -0600
+
+    Mejoras a la interfaz grafica, pero no puedo agregar el tiempo de la cancion
+
+commit d7ea52e8dd73e354a32cb22e9c076983acd9a36d
+Author: sergioalbertogq <sergioalbertogq@gmail.com>
+Date:   Mon Oct 7 16:22:17 2013 -0600
+
+    Se agrego funcionalidad al servidor para escoger la PC remota
+
+commit 2f8c253f1349e5b7f9747326ba35d6ef1ffe9473
+Author: sergioalbertogq <sergioalbertogq@gmail.com>
+Date:   Mon Oct 7 12:06:42 2013 -0600
+
+    Hay un error con el stream
+
+commit cd03aa231b3ef51b91a092d6ed108ef8ef7328d2
+Author: sergioalbertogq <sergioalbertogq@gmail.com>
+Date:   Sun Oct 6 00:06:13 2013 -0600
+
+    Mejoras a la interfaz del cliente
+
+commit 21d812f617b86e6d9c2ad78a41e0682ead4470a1
+Author: sergioalbertogq <sergioalbertogq@gmail.com>
+Date:   Sat Oct 5 23:41:19 2013 -0600
+
+    Haciendo una lista de reproduccion
+
+commit 0f389b8c18957fea8fec136f3d56caf33be48f8c
+Author: sergioalbertogq <sergioalbertogq@gmail.com>
+Date:   Fri Oct 4 21:37:17 2013 -0600
+
+    Tratando de agregar una lista de reproducción
+
+commit ec9810ecf00592d11aaacd72239d08ca7c072618
+Author: sergioalbertogq <sergioalbertogq@gmail.com>
+Date:   Fri Oct 4 21:03:27 2013 -0600
+
+    Agregando funcionalidades a la interfaz grafica
+
+commit 302e4ea52a239834cb9bb2f383b0b0167b50f0c2
+Author: luisrcarrillo <luisrcarrillo2205@gmail.com>
+Date:   Fri Oct 4 10:27:10 2013 -0600
+
+    agregado funcionalidad a cliente
+
+commit 0a5e3b360ca14a95bfc8b3b40af063675dc0922e
+Author: luisrcarrillo <luisrcarrillo2205@gmail.com>
+Date:   Tue Oct 1 23:13:48 2013 -0600
+
+    agregado funcionalidad de stream
+
+commit 8d80e2046c43ee526917a5c565a2a45fa4e94143
+Merge: 229a8e8 274818f
+Author: luisrcarrillo <luisrcarrillo2205@gmail.com>
+Date:   Tue Oct 1 23:04:10 2013 -0600
+
+    Merge branch 'master' of https://github.com/sergioalberto/proyecto1-SE
+
+commit 229a8e8178e54f58365ccd40daade77e550ddf79
+Author: luisrcarrillo <luisrcarrillo2205@gmail.com>
+Date:   Tue Oct 1 23:02:15 2013 -0600
+
+    agregado funcionalidad de stream
+
+commit 274818fb0f9c3cc2e4f133b6f47e8e1ecadd32b1
+Author: sergioalbertogq <sergioalbertogq@gmail.com>
+Date:   Tue Oct 1 22:24:39 2013 -0600
+
+    descripcion del proyecto
+
+commit 016cad4ee1c6cfe281630af0eea893f30707728f
+Author: luisrcarrillo <luisrcarrillo2205@gmail.com>
+Date:   Tue Oct 1 21:53:10 2013 -0600
+
+    acomodando codigo y solucionando detalles de reproduccion
+
+commit 08b167c43e1e765d655b2c2fbf74796f98d72c4b
+Author: luisrcarrillo <luisrcarrillo2205@gmail.com>
+Date:   Mon Sep 30 18:24:47 2013 -0600
+
+    agregando reproduccion y carga de archivo
+
+commit 37b49da547f30c6046193e46e1b97bdabae9b000
+Author: luisrcarrillo <luisrcarrillo2205@gmail.com>
+Date:   Thu Sep 26 18:46:07 2013 -0600
+
+    creacion de las aplicaciones en QT
+
+commit 9c78bca7e9715a633e2f1df43a8b658748374709
+Author: sergioalberto <sergioalberto@users.noreply.github.com>
+Date:   Wed Sep 25 17:47:15 2013 -0600
+
+    Delete README.md~
+
+commit b46294ea02e8519f528de5c22af0447aec0d4656
+Author: sergioalberto <sergioalberto@users.noreply.github.com>
+Date:   Wed Sep 25 17:47:07 2013 -0600
+
+    Delete Commands.txt~
+
+commit 629537a5d0f81679d74665fb485a015e915d276b
+Author: sergioalbertogq <sergioalbertogq@gmail.com>
+Date:   Wed Sep 25 17:30:28 2013 -0600
+
+    Agregue un pequeño tutorial
+
+commit 1c6d895f316c017d7e68dc6d3389818c806412df
+Author: sergioalbertogq <sergioalbertogq@gmail.com>
+Date:   Wed Sep 25 17:21:02 2013 -0600
+
+    pequeño cambio
+
+commit 10ce82ab9e535518584c39050d8c04cd65fd5d9e
+Author: sergioalberto <sergioalberto@users.noreply.github.com>
+Date:   Wed Sep 25 15:59:10 2013 -0600
+
+    Update README.md
+
+commit 23a988608e6fa9d3050d711ae2cac6d90b322d0a
+Author: sergioalberto <sergioalberto@users.noreply.github.com>
+Date:   Wed Sep 25 15:58:52 2013 -0600
+
+    Update README.md
+
+commit 000e567e15ee4a3312aead07968ea6e359ed5c97
+Author: sergioalberto <sergioalbertogq@gmail.com>
+Date:   Wed Sep 25 14:57:18 2013 -0700
+
+    Comandos de pipelinel
+
+commit 348e9e6222afd6828ecd72167239a8660e08a82e
+Author: sergioalberto <sergioalberto@users.noreply.github.com>
+Date:   Wed Sep 25 14:24:00 2013 -0700
+
+    Initial commit
+
